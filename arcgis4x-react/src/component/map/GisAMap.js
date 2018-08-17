@@ -6,6 +6,7 @@ import {
   onlineAMapAnooMarkerURL
 } from "./../config";
 
+//在线高德地图
 export default class GisAMap extends Component {
   componentDidMount() {
     this.initMap();

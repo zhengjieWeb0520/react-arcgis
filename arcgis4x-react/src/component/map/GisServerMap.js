@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import esriLoader from "esri-loader";
 
+//在线切片底图服务
 export default class GisServerMap extends Component {
   constructor(props) {
     super(props);
@@ -30,16 +31,17 @@ export default class GisServerMap extends Component {
         let layer = new TileLayer({
           url: this.tileMapUrl
         });
+        //实例化底图对象
         let baseMap = new Basemap({
           baseLayers: [layer],
           title: "Custom Basemap",
           id: "myBasemap"
         });
-        // Create a Map instance
+        //实例化地图对象
         let map = new Map({
           basemap: baseMap
         });
-        // Create a MapView instance (for 2D viewing) and reference the map instance
+        //实例化view
         //2D
         let view2D = new MapView({
           center: [120.2, 32.1],

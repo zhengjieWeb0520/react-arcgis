@@ -5,7 +5,7 @@ import {
   onlineSatelliteURL,
   onlineAnooMarkerURL
 } from "./../config";
-
+//谷歌地图2D
 export default class GisGoogleMap extends Component {
   componentDidMount() {
     this.initMap();
