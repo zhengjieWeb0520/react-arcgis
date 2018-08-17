@@ -1,28 +1,51 @@
+.lifloat, .App header nav ul li, .App main > div > div ul li {
+  float: left;
+  margin-left: 20px;
+}
+
 .App {
-  text-align: center;
+  height: 100%;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+.App header {
+  height: 30px;
 }
 
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
+.App header nav ul li {
+  font-size: 16px;
+}
+
+.App main {
+  height: 100%;
+}
+
+.App main > div {
+  height: 100%;
+}
+
+.App main > div #CorInfo {
+  position: fixed;
+  bottom: 0;
+  height: 25px;
+  background: rgba(0, 0, 0, 0.5);
+  line-height: 25px;
+  width: 100%;
+  text-align: right;
+}
+
+.App main > div #CorInfo span {
   color: white;
 }
 
-.App-title {
-  font-size: 1.5em;
+.App main > div > div ul li {
+  font-size: 16px;
 }
 
-.App-intro {
-  font-size: large;
+.App main > div > div ul li a {
+  color: #000000;
 }
-
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.mapContent{
+  width:100%;
+  height: 90%;
 }
+/*# sourceMappingURL=ArcGISStyle.css.map */
