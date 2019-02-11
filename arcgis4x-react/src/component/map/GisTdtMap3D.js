@@ -124,7 +124,7 @@ export default class GisTdtMap3D extends Component {
     };
     return (
       <div id="GisTdtMap3D" className="mapContent">
-        <div id="mapDiv" style={style} />
+        <div id="mapDiv" style={style} ></div>
       </div>
     );
   }

@@ -1,0 +1,305 @@
+html {
+	line-height: 1.15; /* 1 */
+	-webkit-text-size-adjust: 100%; /* 2 */
+}
+
+hr {
+	box-sizing: content-box; /* 1 */
+	height: 0; /* 1 */
+	overflow: visible; /* 2 */
+}
+
+pre {
+	font-family: monospace, monospace; /* 1 */
+	font-size: 1em; /* 2 */
+}
+
+a {
+	background-color: transparent;
+	text-decoration: none;
+}
+
+abbr[title] {
+	border-bottom: none; /* 1 */
+	text-decoration: underline; /* 2 */
+	text-decoration: underline dotted; /* 2 */
+}
+
+b,
+strong {
+	font-weight: bolder;
+}
+
+code,
+kbd,
+samp {
+	font-family: monospace, monospace; /* 1 */
+	font-size: 1em; /* 2 */
+}
+
+small {
+	font-size: 80%;
+}
+
+sub,
+sup {
+	font-size: 75%;
+	line-height: 0;
+	position: relative;
+	vertical-align: baseline;
+}
+
+sub {
+	bottom: -0.25em;
+}
+
+sup {
+	top: -0.5em;
+}
+
+img {
+	border-style: none;
+}
+
+button,
+input,
+optgroup,
+select,
+textarea {
+	font-family: inherit; /* 1 */
+	font-size: 100%; /* 1 */
+	line-height: 1.15; /* 1 */
+	margin: 0; /* 2 */
+}
+
+button,
+input {
+	/* 1 */
+	overflow: visible;
+}
+
+button,
+select {
+	/* 1 */
+	text-transform: none;
+}
+
+button,
+[type='button'],
+[type='reset'],
+[type='submit'] {
+	-webkit-appearance: button;
+}
+
+button::-moz-focus-inner,
+[type='button']::-moz-focus-inner,
+[type='reset']::-moz-focus-inner,
+[type='submit']::-moz-focus-inner {
+	border-style: none;
+	padding: 0;
+}
+
+button:-moz-focusring,
+[type='button']:-moz-focusring,
+[type='reset']:-moz-focusring,
+[type='submit']:-moz-focusring {
+	outline: 1px dotted ButtonText;
+}
+
+fieldset {
+	padding: 0.35em 0.75em 0.625em;
+}
+
+legend {
+	box-sizing: border-box; /* 1 */
+	color: inherit; /* 2 */
+	display: table; /* 1 */
+	max-width: 100%; /* 1 */
+	padding: 0; /* 3 */
+	white-space: normal; /* 1 */
+}
+
+progress {
+	vertical-align: baseline;
+}
+
+textarea {
+	overflow: auto;
+}
+
+[type='checkbox'],
+[type='radio'] {
+	box-sizing: border-box; /* 1 */
+	padding: 0; /* 2 */
+}
+
+[type='number']::-webkit-inner-spin-button,
+[type='number']::-webkit-outer-spin-button {
+	height: auto;
+}
+
+[type='search'] {
+	-webkit-appearance: textfield; /* 1 */
+	outline-offset: -2px; /* 2 */
+}
+
+[type='search']::-webkit-search-decoration {
+	-webkit-appearance: none;
+}
+
+::-webkit-file-upload-button {
+	-webkit-appearance: button; /* 1 */
+	font: inherit; /* 2 */
+}
+
+details {
+	display: block;
+}
+
+summary {
+	display: list-item;
+}
+
+template {
+	display: none;
+}
+
+[hidden] {
+	display: none;
+}
+
+/*全局初始化样式*/
+body {
+	padding: 0;
+	margin: 0 auto;
+	font-size: 14px;
+	line-height: 1.42857143;
+	font-family: arial, Microsoft YaHei, '微软雅黑', '宋体';
+	color: #666460;
+	width: 100%;
+	min-width: 320px;
+	zoom: 1;
+	/*禁用Webkit内核浏览器的文字大小调整功能*/
+	-webkit-text-size-adjust: none;
+	/*取出点击出现半透明的灰色背景*/
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+	-webkit-tap-highlight: rgba(0, 0, 0, 0);
+	/*控制文本可选性*/
+	-webkit-user-select: none;
+	-ms-user-select: none;
+	-moz-user-select: none;
+	-khtml-user-select: none;
+	user-select: none;
+	/*设置字体的抗锯齿或者说光滑度*/
+	-webkit-font-smoothing: antialiased;
+}
+
+/*默认去除ul、li的默认样式*/
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+td {
+	margin: 0;
+	padding: 0;
+}
+ul,
+ul li {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+/*初始化下拉菜单、单行输入框、多行输入框的样式*/
+select,
+input,
+textarea {
+	border-radius: 0;
+	-webkit-border-radius: 0;
+	color: #666460;
+}
+/*表单元素获得焦点时不显示虚线框*/
+input:focus {
+	outline: none;
+}
+input,
+button,
+select,
+textarea {
+	outline: none; /*-webkit-appearance:none;*/ /*强制去除表单自带的样式*/
+}
+/*不允许多行输入文本框有滚动条*/
+textarea {
+	resize: none; /*-webkit-appearance:none;*/ /*强制去除textarea自带的样式*/
+}
+/*初始化表单元素样式*/
+textarea,
+input,
+select {
+	background: none;
+	border: none;
+	margin: 0;
+	padding: 0;
+}
+/*初始化HTML5标签样式*/
+audio,
+canvas,
+progress,
+video {
+	display: inline-block;
+	vertical-align: baseline;
+}
+article,
+aside,
+footer,
+header,
+hgroup,
+nav,
+section,
+figure,
+figcaption {
+	display: block;
+}
+/*去除figure边距*/
+figure,
+figcaption {
+	margin: 0px;
+	padding: 0px;
+}
+
+/*初始化图片样式*/
+img {
+	border: none;
+  border: 0;
+	max-width: 100%;
+	vertical-align: top;
+}
+
+/*初始化a的样式和字体样式*/
+a {
+	text-decoration: none;
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+a:focus {
+	outline: none;
+	-moz-outline: none;
+}
+
+/* common.css */
+.clearfix:after {
+	content: '.';
+	display: block;
+	height: 0;
+	clear: both;
+	visibility: hidden;
+}
+
+.fl {
+	float: left;
+}
+.fr {
+	float: right;
+}
+/* common.css */
