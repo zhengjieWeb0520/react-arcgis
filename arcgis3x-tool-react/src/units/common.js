@@ -569,32 +569,118 @@ export function direction(data) {
 	}
 }
 
-//要素无效值判断
-export function invalidValue(data) {
-	if (data == -99991 || data == -99992 || data == -99993 || data == -99994 || data == -99999 || data == null) {
-		return '----'
-	} else {
-		return data
-	}
+/**
+ * 解析XML获取镶嵌数据集参数
+ * productMark：产品标识
+ * productXml：xml文件结构
+ */
+export function getMosicalParam (productMark, productXml) {
+  let nodeList = productXml.getElementsByTagName('Plugin')
+  let inputRanges = []
+  let outputValues = []
+  let colorMap = []
+  let labelArray = []
+  // let pixLabel
+  // let nodata = ''
+  let unit
+  for (let i = 0; i <= nodeList.length - 1; i++) {
+    if (nodeList[i].attributes[0].value === productMark) {
+      // pixLabel = nodeList[i].getElementsByTagName('ProdDesp')[0].textContent
+      unit = nodeList[i].getElementsByTagName('ReMaps')[0].attributes[0].value
+      // nodata = nodeList[i].getElementsByTagName('ReMaps')[0].attributes[1].value
+      let reMapDom = nodeList[i].childNodes[5].getElementsByTagName('ReMap')
+      for (let j = 0; j <= reMapDom.length - 1; j++) {
+        let reMapAttr = reMapDom[j].attributes
+        let minValue = Number(reMapAttr[1].value)
+        let maxValue = Number(reMapAttr[2].value)
+        let revLevel = Number(reMapAttr[3].value)
+        let colorValue = reMapAttr[4].value.split(',')
+        let colorArr = []
+        inputRanges.push(minValue)
+        inputRanges.push(maxValue)
+        outputValues.push(revLevel)
+        colorArr.push(revLevel)
+        colorValue.forEach(item => {
+          colorArr.push(Number(item))
+        })
+        colorMap.push(colorArr)
+        labelArray.push(reMapAttr[5].value)
+      }
+    }
+  }
+  let data = {
+    inputRanges: inputRanges,
+    outputValues: outputValues,
+    colorMap: colorMap,
+    labelArray: labelArray
+  }
+  return data
+}
+/**
+ * 画图例
+ * @param {*} number
+ */
+export function drawLegend (Colormap, labelArray, productMark, canvasId, canvasClass) {
+  let dataObj = []
+  Colormap.forEach((element, index) => {
+    let colorString = []
+    element.forEach((item, index) => {
+      if (index !== 0) {
+        colorString.push(item)
+      }
+    })
+    let levelName = labelArray[index]
+    let obj = {
+      tname: levelName,
+      color: `rgb(${colorString[0]},${colorString[1]},${colorString[2]})`
+    }
+    dataObj.push(obj)
+  })
+  console.log(dataObj)
+  let canvas = document.getElementById(canvasId)
+  var ctx = canvas.getContext('2d')
+  let widthArray = []
+  for (var i = 0; i < dataObj.length; i++) {
+    let txt = dataObj[i].tname
+    widthArray.push(ctx.measureText(txt).width)
+  }
+  let maxItemWidth = Math.max(...widthArray)
+
+  var yheight = 30
+  yheight += dataObj.length * 27 // 计算canvas高度
+  canvas.width = 60 + maxItemWidth
+  canvas.height = yheight
+
+  ctx.fillStyle = 'rgba(248, 251, 255, 0.2)'
+  ctx.fillRect(0, 0, 200, yheight) // 绘制底图
+  ctx.font = '16px Arial'
+  ctx.fillStyle = '#000'
+  let str = productMark
+  let startWidth = (canvas.width - ctx.measureText(str).width) / 2
+  ctx.fillText(str, startWidth, 20)
+  document.querySelector(canvasClass).style.display = 'block'
+
+  for (let i = 0; i < dataObj.length; i++) {
+    // 实现文字前面带色块
+    ctx.fillStyle = dataObj[i].color // 块颜色
+    // 实现色块的边框
+    ctx.moveTo(10, 60 + (i - 1) * 25)
+    ctx.lineTo(10 + 25, 60 + (i - 1) * 25)
+    ctx.lineTo(10 + 25, 60 + (i - 1) * 25 + 15)
+    ctx.lineTo(10, 60 + (i - 1) * 25 + 15)
+    ctx.closePath()
+    ctx.lineWidth = 1
+    ctx.strokeStyle = '#8C7A58'
+    ctx.strokeRect = '#8C7A58'
+    ctx.stroke()
+    ctx.fillRect(10, 60 + (i - 1) * 25, 25, 15) // 颜色块：x,y,w,h
+    ctx.font = '12px Arial'
+    ctx.fillStyle = '#555'
+    let txt = dataObj[i].tname
+    ctx.fillText(txt, 40, 72 + (i - 1) * 25) // 文字
+  }
 }
 
-//折线图无效值判断
-export function invalidData(data) {
-	if (data == -99991 || data == -99992 || data == -99993 || data == -99994 || data == -99999 || data == null) {
-		return ''
-	} else {
-		return data
-	}
-}
-
-//将传输机id转换成传输机ip
-export function getTransIp(transId, allTransInfo) {
-	for (let i = 0; i < allTransInfo.length; i++) {
-		if (allTransInfo[i].id == transId) {
-			return allTransInfo[i].ip
-		}
-	}
-}
 
 /*
 服务器本地ip切换

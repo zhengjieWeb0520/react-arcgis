@@ -9,6 +9,7 @@ import { Provider } from 'react-redux'
 import thunk from 'redux-thunk'
 
 import './index.css'
+import './units/Reset.scss'
 import * as serviceWorker from './serviceWorker'
 import reducers from './reducers'
 //加载组件

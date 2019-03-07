@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux'
-import { counter } from './redux/count.redux'
+import { gisBaseMap } from './redux/1-arcgis3x/baseMap.redux'
 
 export default combineReducers({
-  counter
+  gisBaseMap
 })

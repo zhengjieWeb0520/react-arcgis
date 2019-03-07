@@ -8,8 +8,7 @@ class Header extends Component{
       <header>
         <nav>
           <ul>
-            <li className='fl'><Link to={`${url}`}>组件之间通信</Link></li>
-            <li className='fl'><Link to={`${url}/reactRedux`}>reactRedux</Link></li>
+            <li className='fl'><Link to={`${url}/liveMap`}>arcgis地图</Link></li>
           </ul>
         </nav>
       </header>
